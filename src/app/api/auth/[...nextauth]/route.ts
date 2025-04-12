@@ -3,10 +3,11 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { PrismaClient } from "@prisma/client";
 import GoogleProvider from "next-auth/providers/google";
 import MicrosoftProvider from "next-auth/providers/azure-ad";
+import type { NextAuthOptions } from "next-auth";
 
 const prisma = new PrismaClient();
 
-const handler = NextAuth({
+export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
@@ -29,9 +30,10 @@ const handler = NextAuth({
   },
   pages: {
     signIn: '/auth/signin',
-    signUp: '/auth/signup',
     error: '/auth/error',
   },
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST }; 
