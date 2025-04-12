@@ -3,11 +3,14 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
-  title: 'V-Solution - Find Your Perfect English Learning Center',
-  description: 'Discover, compare, and select the best English learning centers with AI-powered recommendations and VR experiences.',
+  title: 'i-View Solutions',
+  description: 'Find and compare English learning centers with AI-powered recommendations',
 };
 
 export default function RootLayout({
@@ -16,12 +19,10 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
+    <html lang="en" className={inter.className}>
+      <body className="min-h-screen bg-gray-50">
         <Navigation />
-        <main className="min-h-screen bg-gray-50">
-          {children}
-        </main>
+        <main>{children}</main>
       </body>
     </html>
   );
