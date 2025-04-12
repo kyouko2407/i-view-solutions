@@ -15,15 +15,6 @@ declare module "next-auth" {
   }
 }
 
-declare module "next-auth/adapters" {
-  interface AdapterUser {
-    id: string;
-    name: string | null;
-    email: string | null;
-    image: string | null;
-  }
-}
-
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
   providers: [
@@ -49,4 +40,4 @@ export const authOptions: NextAuthOptions = {
     signIn: '/auth/signin',
     error: '/auth/error',
   },
-}; 
+};
