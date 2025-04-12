@@ -1,16 +1,18 @@
 import Link from 'next/link'
-import Logo from './Logo'
+import VSolutionsLogo from './VSolutionsLogo'
 
 export default function Navigation() {
   return (
     <nav className="bg-white shadow-sm">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          <Logo />
+          <Link href="/" className="flex items-center">
+            <VSolutionsLogo />
+          </Link>
           
           <div className="hidden md:flex items-center space-x-8">
             <Link href="/search" className="text-gray-600 hover:text-blue-600 transition-colors">
-              Search Centers
+              Find Centers
             </Link>
             <Link href="/practice-tests" className="text-gray-600 hover:text-blue-600 transition-colors">
               Practice Tests
@@ -31,12 +33,11 @@ export default function Navigation() {
           </div>
 
           <div className="flex items-center space-x-4">
-            <Link 
-              href="/auth/signin" 
-              className="text-gray-600 hover:text-blue-600 transition-colors"
+            <button
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
             >
               Login
-            </Link>
+            </button>
             <Link 
               href="/auth/signup" 
               className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
