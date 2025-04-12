@@ -160,7 +160,7 @@ export default function VirtualTour({ roomId }: VirtualTourProps) {
         }
       },
       undefined,
-      (error: ErrorEvent) => {
+      (error: unknown) => {
         console.error('Error loading panorama:', error);
         setIsLoading(false);
       }
