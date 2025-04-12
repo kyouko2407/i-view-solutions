@@ -10,11 +10,11 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center">
             <Image
-              src="/logo-full.png"
+              src="/images/logo.png"
               alt="V-Solutions Logo"
               width={400}
               height={120}
-              className="mx-auto mb-12"
+              className="mx-auto mb-12 h-auto w-auto"
               priority
             />
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
