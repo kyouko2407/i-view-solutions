@@ -10,11 +10,12 @@ export default function Home() {
         <div className="relative max-w-7xl mx-auto">
           <div className="text-center">
             <Image
-              src="/logo-white.png"
-              alt="i-View Solutions Logo"
-              width={300}
-              height={100}
-              className="mx-auto mb-8"
+              src="/logo-full.png"
+              alt="V-Solutions Logo"
+              width={400}
+              height={120}
+              className="mx-auto mb-12"
+              priority
             />
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               INNOVATIVE SOLUTIONS FOR
@@ -46,7 +47,7 @@ export default function Home() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-2xl sm:text-3xl font-bold text-center mb-12">
-            Why Choose i-View Solutions?
+            Why Choose V-Solutions?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-gray-50 p-6 rounded-lg">
@@ -124,7 +125,7 @@ export default function Home() {
           </h2>
           <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
             Join thousands of students who have found their perfect learning center
-            through i-View Solutions.
+            through V-Solutions.
           </p>
           <Link
             href="/search"

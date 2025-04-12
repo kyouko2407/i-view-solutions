@@ -4,12 +4,15 @@ import Image from 'next/image';
 
 export default function VSolutionsLogo() {
   return (
-    <Image
-      src="/logo.png"
-      alt="i-View Solutions Logo"
-      width={150}
-      height={40}
-      priority
-    />
+    <div className="flex items-center">
+      <Image
+        src="/logo-full.png"
+        alt="V-Solutions Logo"
+        width={200}
+        height={60}
+        priority
+        className="h-auto"
+      />
+    </div>
   );
 } 
