@@ -3,18 +3,24 @@ import { PrismaClient } from "@prisma/client";
 import GoogleProvider from "next-auth/providers/google";
 import MicrosoftProvider from "next-auth/providers/azure-ad";
 import type { NextAuthOptions } from "next-auth";
-import type { User } from "@prisma/client";
+import type { DefaultSession } from "next-auth";
 
 const prisma = new PrismaClient();
 
 declare module "next-auth" {
-  interface Session {
+  interface Session extends DefaultSession {
     user: {
       id: string;
-      name?: string | null;
-      email?: string | null;
-      image?: string | null;
-    }
+    } & DefaultSession["user"]
+  }
+}
+
+declare module "next-auth/adapters" {
+  interface AdapterUser {
+    id: string;
+    name: string | null;
+    email: string | null;
+    image: string | null;
   }
 }
 
