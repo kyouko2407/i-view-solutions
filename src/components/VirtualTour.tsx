@@ -2,11 +2,11 @@
 
 import { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer';
+import { CSS2DRenderer, CSS2DObject } from 'three/examples/jsm/renderers/CSS2DRenderer.js';
 
 interface Hotspot {
   id: string;
-  position: { x: number; y: number; z: number };
+  position: THREE.Vector3;
   title: string;
   description: string;
 }
@@ -30,13 +30,13 @@ const rooms: Record<string, Room> = {
     hotspots: [
       {
         id: 'smartboard',
-        position: { x: 10, y: 0, z: -10 },
+        position: new THREE.Vector3(10, 0, -10),
         title: 'Smart Board',
         description: 'Interactive whiteboard with touch capabilities'
       },
       {
         id: 'seating',
-        position: { x: -10, y: -2, z: 5 },
+        position: new THREE.Vector3(-10, -2, 5),
         title: 'Student Area',
         description: 'Ergonomic seating arranged for group activities'
       }
@@ -49,13 +49,13 @@ const rooms: Record<string, Room> = {
     hotspots: [
       {
         id: 'study-area',
-        position: { x: 8, y: 0, z: 8 },
+        position: new THREE.Vector3(8, 0, 8),
         title: 'Study Area',
         description: 'Quiet zone for focused learning'
       },
       {
         id: 'digital-resources',
-        position: { x: -8, y: 1, z: -8 },
+        position: new THREE.Vector3(-8, 1, -8),
         title: 'Digital Resources',
         description: 'Access to online learning materials'
       }
@@ -68,13 +68,13 @@ const rooms: Record<string, Room> = {
     hotspots: [
       {
         id: 'presentation-area',
-        position: { x: 10, y: 1, z: 0 },
+        position: new THREE.Vector3(10, 1, 0),
         title: 'Presentation Area',
         description: 'Space for student presentations'
       },
       {
         id: 'collaboration-zone',
-        position: { x: -5, y: 0, z: 8 },
+        position: new THREE.Vector3(-5, 0, 8),
         title: 'Collaboration Zone',
         description: 'Tables arranged for group work'
       }
@@ -87,13 +87,13 @@ const rooms: Record<string, Room> = {
     hotspots: [
       {
         id: 'audio-stations',
-        position: { x: 8, y: 0, z: 5 },
+        position: new THREE.Vector3(8, 0, 5),
         title: 'Audio Stations',
         description: 'Individual listening and speaking practice booths'
       },
       {
         id: 'recording-studio',
-        position: { x: -8, y: 0, z: -5 },
+        position: new THREE.Vector3(-8, 0, -5),
         title: 'Recording Studio',
         description: 'Professional recording space for pronunciation practice'
       }
@@ -106,6 +106,7 @@ export default function VirtualTour({ roomId }: VirtualTourProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
   const [isMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
+  const [hotspots, setHotspots] = useState<Hotspot[]>(rooms[roomId].hotspots);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -149,7 +150,7 @@ export default function VirtualTour({ roomId }: VirtualTourProps) {
             hotspotDiv.textContent = '•';
             
             const hotspotLabel = new CSS2DObject(hotspotDiv);
-            hotspotLabel.position.set(hotspot.position.x, hotspot.position.y, hotspot.position.z);
+            hotspotLabel.position.copy(hotspot.position);
             scene.add(hotspotLabel);
 
             hotspotDiv.addEventListener('click', () => {
