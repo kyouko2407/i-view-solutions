@@ -133,8 +133,12 @@ export default function VirtualTour({ roomId }: VirtualTourProps) {
 
     // Load the panorama texture
     const textureLoader = new THREE.TextureLoader();
+    const imageUrl = roomId === 'classroom1' 
+      ? 'https://poly.cam/capture/666D9313-C1C5-417C-8A45-D76EADA67E9E'
+      : `/images/rooms/${roomId}.jpg`;
+    
     textureLoader.load(
-      `/images/rooms/${roomId}.jpg`,
+      imageUrl,
       (texture: THREE.Texture) => {
         const material = new THREE.MeshBasicMaterial({ map: texture });
         const sphere = new THREE.Mesh(geometry, material);
