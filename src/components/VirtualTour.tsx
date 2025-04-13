@@ -274,10 +274,17 @@ export default function VirtualTour({ roomId }: VirtualTourProps) {
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
+      ) : roomId === 'language_lab' ? (
+        <iframe 
+          src="https://poly.cam/capture/DD223B27-042B-4B5F-87C5-277E7D05A6F3/embed"
+          className="w-full h-full border-0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
       ) : (
         <div ref={containerRef} className="w-full h-full" />
       )}
-      {isLoading && roomId !== 'classroom1' && roomId !== 'library' && roomId !== 'discussion' && (
+      {isLoading && roomId !== 'classroom1' && roomId !== 'library' && roomId !== 'discussion' && roomId !== 'language_lab' && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
           <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-600"></div>
         </div>
@@ -294,7 +301,7 @@ export default function VirtualTour({ roomId }: VirtualTourProps) {
           </button>
         </div>
       )}
-      {isMobile && roomId !== 'classroom1' && roomId !== 'library' && roomId !== 'discussion' && (
+      {isMobile && roomId !== 'classroom1' && roomId !== 'library' && roomId !== 'discussion' && roomId !== 'language_lab' && (
         <div className="absolute top-4 left-4 right-4 bg-black/50 text-white p-2 rounded text-sm text-center">
           Touch and drag to look around
         </div>
