@@ -106,10 +106,14 @@ export default function VirtualTour({ roomId }: VirtualTourProps) {
   const [isLoading, setIsLoading] = useState(true);
   const [activeHotspot, setActiveHotspot] = useState<Hotspot | null>(null);
   const [isMobile] = useState(() => typeof window !== 'undefined' && window.innerWidth < 768);
-  const [hotspots, setHotspots] = useState<Hotspot[]>(rooms[roomId].hotspots);
 
   useEffect(() => {
     if (!containerRef.current) return;
+
+    if (roomId === 'classroom1') {
+      setIsLoading(false);
+      return;
+    }
 
     // Set up Three.js scene
     const scene = new THREE.Scene();
@@ -133,12 +137,8 @@ export default function VirtualTour({ roomId }: VirtualTourProps) {
 
     // Load the panorama texture
     const textureLoader = new THREE.TextureLoader();
-    const imageUrl = roomId === 'classroom1' 
-      ? 'https://poly.cam/capture/666D9313-C1C5-417C-8A45-D76EADA67E9E'
-      : `/images/rooms/${roomId}.jpg`;
-    
     textureLoader.load(
-      imageUrl,
+      `/images/rooms/${roomId}.jpg`,
       (texture: THREE.Texture) => {
         const material = new THREE.MeshBasicMaterial({ map: texture });
         const sphere = new THREE.Mesh(geometry, material);
@@ -253,8 +253,17 @@ export default function VirtualTour({ roomId }: VirtualTourProps) {
 
   return (
     <div className="relative w-full h-[600px]">
-      <div ref={containerRef} className="w-full h-full" />
-      {isLoading && (
+      {roomId === 'classroom1' ? (
+        <iframe 
+          src="https://poly.cam/capture/666D9313-C1C5-417C-8A45-D76EADA67E9E/embed"
+          className="w-full h-full border-0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      ) : (
+        <div ref={containerRef} className="w-full h-full" />
+      )}
+      {isLoading && roomId !== 'classroom1' && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
           <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-600"></div>
         </div>
@@ -271,7 +280,7 @@ export default function VirtualTour({ roomId }: VirtualTourProps) {
           </button>
         </div>
       )}
-      {isMobile && (
+      {isMobile && roomId !== 'classroom1' && (
         <div className="absolute top-4 left-4 right-4 bg-black/50 text-white p-2 rounded text-sm text-center">
           Touch and drag to look around
         </div>
