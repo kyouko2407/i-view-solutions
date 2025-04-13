@@ -260,10 +260,17 @@ export default function VirtualTour({ roomId }: VirtualTourProps) {
           allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         />
+      ) : roomId === 'library' ? (
+        <iframe 
+          src="https://poly.cam/capture/6F6B4264-98C1-4FE1-970A-F0E3AEBA65AD/embed"
+          className="w-full h-full border-0"
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
       ) : (
         <div ref={containerRef} className="w-full h-full" />
       )}
-      {isLoading && roomId !== 'classroom1' && (
+      {isLoading && roomId !== 'classroom1' && roomId !== 'library' && (
         <div className="absolute inset-0 flex items-center justify-center bg-gray-100">
           <div className="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-blue-600"></div>
         </div>
@@ -280,7 +287,7 @@ export default function VirtualTour({ roomId }: VirtualTourProps) {
           </button>
         </div>
       )}
-      {isMobile && roomId !== 'classroom1' && (
+      {isMobile && roomId !== 'classroom1' && roomId !== 'library' && (
         <div className="absolute top-4 left-4 right-4 bg-black/50 text-white p-2 rounded text-sm text-center">
           Touch and drag to look around
         </div>
