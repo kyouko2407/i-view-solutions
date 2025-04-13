@@ -11,6 +11,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'V-Solutions',
   description: 'Find and compare English learning centers with AI-powered recommendations',
+  icons: {
+    icon: '/images/icon.ico',
+  },
 };
 
 export default function RootLayout({
