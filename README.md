@@ -1,4 +1,4 @@
-# V-Solution - English Learning Platform
+# V-Solutions - English Learning Platform
 
 A modern platform for finding and comparing English learning centers, with AI-powered recommendations and VR experiences.
 
@@ -52,7 +52,7 @@ A modern platform for finding and comparing English learning centers, with AI-po
    git init
    git add .
    git commit -m "Initial commit"
-   git remote add origin https://github.com/YOUR_USERNAME/i-view-solutions.git
+   git remote add origin https://github.com/YOUR_USERNAME/v-solutions.git
    git push -u origin main
    ```
 
