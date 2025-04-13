@@ -13,13 +13,12 @@ export const metadata: Metadata = {
   description: 'Find and compare English learning centers with AI-powered recommendations',
   icons: {
     icon: [
-      { url: '/images/icon.ico', sizes: 'any' },
       { url: '/images/icon.ico', type: 'image/x-icon' },
+      { url: '/images/icon.ico', type: 'image/ico' },
     ],
     shortcut: '/images/icon.ico',
     apple: '/images/icon.ico',
   },
-  manifest: '/images/icon.ico',
 };
 
 export default function RootLayout({
@@ -30,8 +29,8 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <head>
-        <link rel="icon" href="/images/icon.ico" type="image/x-icon" />
-        <link rel="shortcut icon" href="/images/icon.ico" type="image/x-icon" />
+        <link rel="icon" type="image/x-icon" href="/images/icon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="/images/icon.ico" />
         <link rel="apple-touch-icon" href="/images/icon.ico" />
       </head>
       <body className="min-h-screen bg-gray-50">
