@@ -9,7 +9,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'i-View Solutions',
+  title: 'V-Solutions',
   description: 'Find and compare English learning centers with AI-powered recommendations',
 };
 
