@@ -4,7 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/Navigation";
 import AIChat from "@/components/AIChat";
 import { Toaster } from 'react-hot-toast';
-import { SessionProvider } from 'next-auth/react';
+import Providers from "@/components/Providers";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,7 +37,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="/images/icon.ico" />
       </head>
       <body className="min-h-screen bg-gray-50">
-        <SessionProvider>
+        <Providers>
           <Navigation />
           <main className="container mx-auto px-4 py-8">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -48,7 +48,7 @@ export default function RootLayout({
             </div>
           </main>
           <Toaster position="top-right" />
-        </SessionProvider>
+        </Providers>
       </body>
     </html>
   );
