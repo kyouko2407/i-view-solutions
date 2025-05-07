@@ -4,7 +4,7 @@ import { authOptions } from '@/lib/auth';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY || '');
-const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
+const model = genAI.getGenerativeModel({ model: 'gemini-1.0-pro' });
 
 const SYSTEM_PROMPT = `You are an AI assistant specialized in helping users find and compare English learning centers. 
 You can provide information about:
